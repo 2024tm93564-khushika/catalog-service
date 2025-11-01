@@ -18,6 +18,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -180,4 +183,11 @@ public class ProductService {
                 .orElseThrow(() -> new ResourceNotFoundException("Product not found with ID: " + productId));
         return product.getPrice();
     }
+
+    @Transactional
+    public Map<Long, BigDecimal> getProductPrices(List<Long> productIds) {
+        return productRepository.findAllById(productIds).stream()
+                .collect(Collectors.toMap(Product::getProductId, Product::getPrice));
+    }
+
 }

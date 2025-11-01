@@ -14,6 +14,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/v1/products")
@@ -47,7 +49,8 @@ public class ProductController {
     @Operation(summary = "Get all products")
     @GetMapping
     public ResponseEntity<PagedResponse<ProductResponse>> getAllProducts(
-            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "0" +
+                    "") int page,
             @RequestParam(defaultValue = "20") int size,
             @RequestParam(defaultValue = "name") String sortBy,
             @RequestParam(defaultValue = "asc") String sortDir) {
@@ -99,6 +102,13 @@ public class ProductController {
     public ResponseEntity<BigDecimal> getProductPrice(@PathVariable Long productId) {
         BigDecimal price = productService.getProductPrice(productId);
         return ResponseEntity.ok(price);
+    }
+
+    @Operation(summary = "Get prices for multiple products")
+    @GetMapping("/prices")
+    public ResponseEntity<Map<Long, BigDecimal>> getProductPrices(@RequestParam List<Long> productIds) {
+        Map<Long, BigDecimal> prices = productService.getProductPrices(productIds);
+        return ResponseEntity.ok(prices);
     }
 
     @Operation(summary = "Activate product")
