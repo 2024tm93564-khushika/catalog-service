@@ -133,7 +133,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/v1/products?page=0&size=20&sortBy=name&sortDir=asc",
+							"raw": "http://localhost:8081/v1/products?page=0&size=10&sortBy=name&sortDir=asc",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -150,7 +150,7 @@
 								},
 								{
 									"key": "size",
-									"value": "20"
+									"value": "10"
 								},
 								{
 									"key": "sortBy",
@@ -227,7 +227,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8081/v1/products/search?keyword=mouse&page=0&size=10",
+							"raw": "http://localhost:8081/v1/products/search?keyword=prod107&page=0&size=10",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -241,7 +241,7 @@
 							"query": [
 								{
 									"key": "keyword",
-									"value": "mouse"
+									"value": "prod107"
 								},
 								{
 									"key": "page",
@@ -418,6 +418,37 @@
 								"products",
 								"1",
 								"price"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Product Prices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8081/v1/products/prices?productIds=1&productIds=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8081",
+							"path": [
+								"v1",
+								"products",
+								"prices"
+							],
+							"query": [
+								{
+									"key": "productIds",
+									"value": "1"
+								},
+								{
+									"key": "productIds",
+									"value": "2"
+								}
 							]
 						}
 					},
