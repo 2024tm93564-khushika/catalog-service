@@ -43,6 +43,7 @@ The Catalog Service is a microservice responsible for managing the product catal
 #### Pricing
 - `GET /v1/products/{productId}/price` - Get product price
 - `PATCH /v1/products/{productId}/price` - Update product price
+- `GET /v1/products/prices?productIds={productId}` - Get prices for multiple products
 
 #### Activation
 - `PATCH /v1/products/{productId}/activate` - Activate product
@@ -78,10 +79,14 @@ mvn clean package
 
 
 #### 3. Run Locally (with local MySQL)
-Start MySQL
+#### Start MySQL
 docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=root123 -e MYSQL_DATABASE=catalog_db -p 3306:3306 mysql:8.0
+#### Load data in MySQL
+- docker exec -it catalog-mysql mysql -u root -p 
+- password is root123
+- run data-load.sql in MySQL console
 
-Run the application
+#### Run the application
 mvn spring-boot:run
 
 

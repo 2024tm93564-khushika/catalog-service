@@ -98,7 +98,7 @@ VALUES
     (75, 'SKU0075', 'Prod75', 'Electronics', 4674.18, FALSE),
     (76, 'SKU0076', 'Prod76', 'Clothing', 3029.55, FALSE),
     (77, 'SKU0077', 'Prod77', 'Clothing', 4227.95, TRUE),
-    s(78, 'SKU0078', 'Prod78', 'Books', 4219.35, FALSE),
+    (78, 'SKU0078', 'Prod78', 'Books', 4219.35, FALSE),
     (79, 'SKU0079', 'Prod79', 'Electronics', 890.94, TRUE),
     (80, 'SKU0080', 'Prod80', 'Clothing', 539.6, TRUE),
     (81, 'SKU0081', 'Prod81', 'Electronics', 3652.86, FALSE),
