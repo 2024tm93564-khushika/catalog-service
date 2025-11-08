@@ -130,42 +130,42 @@ minikube start --driver=docker --cpus=4 --memory=7000
 
 
 ### 2. Enable Addons
-minikube addons enable metrics-server
-minikube addons enable ingress
+- minikube addons enable metrics-server
+- minikube addons enable ingress
 
 
 
 ### 3. Build Docker Image in Minikube
-minikube -p minikube docker-env --shell powershell | Invoke-Expression
-docker build -t catalog-service:1.0.0 .
+- minikube -p minikube docker-env --shell powershell | Invoke-Expression
+- docker build -t catalog-service:1.0.0 .
 
 
 
 ### 4. Deploy to Kubernetes
-Apply configurations in order
-kubectl apply -f k8s/secret.yaml
-kubectl apply -f k8s/configmap.yaml
-kubectl apply -f k8s/mysql-deployment.yaml
-kubectl apply -f k8s/deployment.yaml
-kubectl apply -f k8s/service.yaml
+#### Apply configurations in order
+- kubectl apply -f k8s/secret.yaml
+- kubectl apply -f k8s/configmap.yaml
+- kubectl apply -f k8s/mysql-deployment.yaml
+- kubectl apply -f k8s/deployment.yaml
+- kubectl apply -f k8s/service.yaml
 
 
 
 ### 5. Check Deployment Status
-kubectl get pods
-kubectl get services
-kubectl get deployments
+- kubectl get pods
+- kubectl get services
+- kubectl get deployments
 
 
 
 ### 6. Access the Service
-Get Minikube IP
+#### Get Minikube IP
 minikube ip
 
-Access service
+#### Access service
 curl http://$(minikube ip):30081/actuator/health
 
-Or use port forwarding
+#### Or use port forwarding
 kubectl port-forward service/catalog-service 8081:8081
 
 
